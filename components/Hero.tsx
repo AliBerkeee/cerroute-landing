@@ -49,7 +49,7 @@ const Hero = () => {
           boxShadow: '0 2px 12px rgba(34,34,34,0.10)',
         }}
       >
-        Yakında • Lansmana özel fırsatlar için kayıt ol
+        Yakında eğitime yeni bir soluk ol
       </motion.div>
       {/* Başlık */}
       <motion.h1
@@ -68,7 +68,7 @@ const Hero = () => {
           textShadow: '0 2px 24px #2228',
         }}
       >
-        Geleceğin <span style={{ color: '#FF9900' }}>Eğitim Platformu</span> <br /> CeRRoute
+        <span style={{ color: '#FF9900' }}>Senin Geleceğin, Senin Rotan</span> <br /> CeRRoute
       </motion.h1>
       {/* Alt başlık */}
       <motion.p
@@ -118,7 +118,7 @@ const Hero = () => {
           </a>
         </motion.div>
         <motion.div
-          whileHover={{ scale: 1.05, backgroundColor: '#fff' }}
+          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
           style={{ display: 'inline-block' }}
           onHoverStart={() => setIsHovered(true)}
@@ -127,7 +127,7 @@ const Hero = () => {
           <a
             href="#features"
             style={{
-              background: 'rgba(255,255,255,0.18)',
+              background: 'rgba(255,255,255,0.13)',
               color: isHovered ? '#FF9900' : '#fff',
               padding: '16px 32px',
               borderRadius: 32,
