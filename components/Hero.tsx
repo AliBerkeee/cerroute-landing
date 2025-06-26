@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const bgUrl = 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
 const Hero = () => {
+  const [isHovered, setIsHovered] = useState(false);
   return (
     <section
       style={{
@@ -120,12 +121,14 @@ const Hero = () => {
           whileHover={{ scale: 1.05, backgroundColor: '#fff' }}
           whileTap={{ scale: 0.97 }}
           style={{ display: 'inline-block' }}
+          onHoverStart={() => setIsHovered(true)}
+          onHoverEnd={() => setIsHovered(false)}
         >
           <a
             href="#features"
             style={{
               background: 'rgba(255,255,255,0.18)',
-              color: '#fff',
+              color: isHovered ? '#FF9900' : '#fff',
               padding: '16px 32px',
               borderRadius: 32,
               fontWeight: 700,
