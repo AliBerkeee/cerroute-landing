@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 import { FiZap, FiUsers, FiMessageCircle, FiClock, FiGlobe, FiCheckSquare, FiCpu } from 'react-icons/fi';
 
 const features = [
-  { icon: <FiZap size={28} color="#fff" />, bg: '#FF9900', color: '#FF9900', title: 'Yapay Zeka Destekli', desc: 'Akıllı öneriler ve kişiselleştirilmiş eğitim deneyimi.' },
-  { icon: <FiUsers size={28} color="#fff" />, bg: '#FF9900', color: '#FF9900', title: 'Erişilebilirlik', desc: 'Sesli komutlar ve gelişmiş betimleme ile herkes için erişim.' },
+  { icon: <FiZap size={28} color="#fff" />, bg: '#FF9900', color: '#FF9900', title: 'Yapay Zeka Destekli', desc: 'Her kullanıcıya özel rota: Gelişmiş yapay zeka ile ilgi alanlarına, öğrenme hızına ve hedeflerine göre özelleştirilmiş içerikler.' },
+  { icon: <FiUsers size={28} color="#fff" />, bg: '#FF9900', color: '#FF9900', title: 'Erişilebilirlikte Yeni Standart', desc: 'Herkes için erişim: Görme engelli bireyler için de optimize edilmiş kullanıcı arayüzü; Sesli navigasyon, gelişmiş betimleme ve klavyesiz kullanım seçenekleri ile kapsayıcı bir öğrenim deneyimi.' },
   { icon: <FiMessageCircle size={28} color="#fff" />, bg: '#0099ff', color: '#0099ff', title: 'Etkileşimli Quizler', desc: 'Öğrenmeyi pekiştiren, eğlenceli ve etkileşimli quizler.' },
-  { icon: <FiClock size={28} color="#fff" />, bg: '#FF9900', color: '#FF9900', title: 'Ofis Saatleri', desc: 'Eğitmenlerle birebir veya grup halinde canlı etkileşim.' },
-  { icon: <FiGlobe size={28} color="#fff" />, bg: '#0099ff', color: '#0099ff', title: 'Çevrimdışı Eğitim', desc: 'İnternet olmasa bile eğitim materyallerine erişim.' },
-  { icon: <FiCheckSquare size={28} color="#fff" />, bg: '#FF9900', color: '#FF9900', title: 'Kariyer Takibi', desc: 'Gelişimini ve başarılarını kolayca takip et.' },
+  { icon: <FiClock size={28} color="#fff" />, bg: '#FF9900', color: '#FF9900', title: 'Ofis Saatleri', desc: 'Gerçek zamanlı rehberlik: Eğitmenlerle birebir veya grup halinde etkileşim kur, doğrudan geri bildirim al.' },
+  { icon: <FiGlobe size={28} color="#fff" />, bg: '#0099ff', color: '#0099ff', title: 'Esnek Öğrenme: Çevrimdışı ve Çevrimiçi Erişim', desc: 'Çevrimdışı içeriklerle internetin olmadığı anlarda bile öğrenmeye devam et; çevrimiçi kaynaklarla güncel ve etkileşimli kal.' },
+  { icon: <FiCheckSquare size={28} color="#fff" />, bg: '#FF9900', color: '#FF9900', title: 'Kariyer ve Başarı Takibi', desc: 'Yolculuğunu görselleştir: Eğitim ilerlemeni, rozetlerini ve kazanımlarını takip et; gelişimini analiz et.' },
 ];
 
 const container = {
@@ -102,9 +102,9 @@ const Solutions = () => (
 
 const faq = [
   { q: 'CeRRoute nedir?', a: 'CeRRoute, modern ve yapay zeka destekli bir eğitim platformudur.' },
-  { q: 'Kimler katılabilir?', a: 'Her yaştan ve seviyeden kullanıcı katılabilir.' },
-  { q: 'Kayıt olmak ücretli mi?', a: 'Lansman döneminde erken kayıt ücretsizdir.' },
-  { q: 'İçerikler nasıl sunuluyor?', a: 'Video, canlı yayın ve interaktif materyallerle.' },
+  { q: 'Kimler katılabilir?', a: 'CeRRoute; kullanıcı hedef kitlesi için tasarlanmıştır. Ayrıca görme engelli bireyler için özel çözümler sunar.' },
+  { q: 'Kayıt olmak ücretli mi?', a: 'Platforma kayıt olmak ücretsizdir. Sertifika programları, ileri seviye kurslar için uygun fiyatlı içerik ve abonelik seçenekleri sunulmaktadır.' },
+  { q: 'İçerikler nasıl sunuluyor?', a: 'İçerikler; video dersler, etkileşimli quizler, sesli anlatımlar, canlı ofis saatleri ve indirilebilir materyaller ile zenginleştirilmiştir. Kullanıcı profiline göre özelleştirilmiş içerikler sunulur ve içeriklere çevrimdışı erişim de mümkündür.' },
 ];
 
 const Faq = () => (
