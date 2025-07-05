@@ -122,15 +122,16 @@ const EarlyAccessForm = () => {
   };
 
   return (
-    <section id="early-access" style={{ background: '#fff', padding: '64px 0 48px 0', display: 'flex', justifyContent: 'center' }}>
+    <section id="early-access" style={{ background: '#fff', padding: 'clamp(48px, 12vw, 64px) 0 clamp(32px, 8vw, 48px) 0', display: 'flex', justifyContent: 'center' }}>
       <div style={{
         display: 'flex',
-        gap: 64,
+        gap: 'clamp(32px, 8vw, 64px)',
         width: '100%',
         maxWidth: 1100,
         alignItems: 'center',
         flexWrap: 'wrap',
         justifyContent: 'center',
+        padding: '0 clamp(16px, 4vw, 16px)',
       }}>
         {/* Avantajlar */}
         <motion.div
@@ -138,9 +139,9 @@ const EarlyAccessForm = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          style={{ flex: '1 1 340px', minWidth: 320, maxWidth: 420, marginBottom: 32, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
+          style={{ flex: '1 1 clamp(300px, 90vw, 340px)', minWidth: 'clamp(280px, 85vw, 320px)', maxWidth: 420, marginBottom: 32, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
         >
-          <h2 style={{ color: '#FF9900', fontWeight: 800, fontSize: '1.6rem', marginBottom: 24, letterSpacing: '-0.5px', textAlign: 'left' }}>
+          <h2 style={{ color: '#FF9900', fontWeight: 800, fontSize: 'clamp(1.4rem, 5vw, 1.6rem)', marginBottom: 24, letterSpacing: '-0.5px', textAlign: 'left' }}>
             Neden CeRRoute?
           </h2>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
@@ -148,8 +149,8 @@ const EarlyAccessForm = () => {
               <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 18, marginBottom: 28 }}>
                 <span style={{ marginTop: 2 }}>{adv.icon}</span>
                 <div>
-                  <div style={{ fontWeight: 700, color: '#222', fontSize: 17, marginBottom: 2 }}>{adv.title}</div>
-                  <div style={{ color: '#444', fontSize: 15 }}>{adv.desc}</div>
+                  <div style={{ fontWeight: 700, color: '#222', fontSize: 'clamp(15px, 4vw, 17px)', marginBottom: 2 }}>{adv.title}</div>
+                  <div style={{ color: '#444', fontSize: 'clamp(14px, 3.5vw, 15px)' }}>{adv.desc}</div>
                 </div>
               </li>
             ))}
@@ -165,8 +166,8 @@ const EarlyAccessForm = () => {
             background: 'rgba(255,255,255,0.98)',
             borderRadius: 32,
             boxShadow: '0 4px 32px #FF990022',
-            padding: '40px 36px 32px 36px',
-            minWidth: 320,
+            padding: 'clamp(32px, 8vw, 40px) clamp(24px, 6vw, 36px) clamp(24px, 6vw, 32px) clamp(24px, 6vw, 36px)',
+            minWidth: 'clamp(280px, 85vw, 320px)',
             maxWidth: 420,
             width: '100%',
             display: 'flex',
@@ -176,10 +177,10 @@ const EarlyAccessForm = () => {
             justifyContent: 'center',
           }}
         >
-          <h2 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#FF9900', marginBottom: 8, letterSpacing: '-0.5px', textAlign: 'center' }}>
+          <h2 style={{ fontSize: 'clamp(1.2rem, 4vw, 1.35rem)', fontWeight: 800, color: '#FF9900', marginBottom: 8, letterSpacing: '-0.5px', textAlign: 'center' }}>
             Erken Kayıt Fırsatı
           </h2>
-          <p style={{ color: '#444', marginBottom: 22, textAlign: 'center', fontWeight: 500 }}>
+          <p style={{ color: '#444', marginBottom: 22, textAlign: 'center', fontWeight: 500, fontSize: 'clamp(14px, 3.5vw, 16px)' }}>
             Aşağıdaki formu doldurarak CeRRoute platformuna ilk katılanlardan biri olabilirsiniz.
           </p>
           <form onSubmit={handleSubmit} style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 16 }}>

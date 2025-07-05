@@ -19,6 +19,8 @@ const Hero = () => {
         overflow: 'hidden',
         paddingTop: 90,
         paddingBottom: 40,
+        paddingLeft: '16px',
+        paddingRight: '16px',
       }}
     >
       {/* Overlay */}
@@ -41,12 +43,13 @@ const Hero = () => {
           background: '#fff',
           color: '#FF9900',
           fontWeight: 700,
-          fontSize: 16,
+          fontSize: 'clamp(14px, 4vw, 16px)',
           borderRadius: 18,
           padding: '7px 22px',
           marginBottom: 32,
           display: 'inline-block',
           boxShadow: '0 2px 12px rgba(34,34,34,0.10)',
+          textAlign: 'center',
         }}
       >
         Yakında eğitime yeni bir soluk ol
@@ -57,7 +60,7 @@ const Hero = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         style={{
-          fontSize: '3.2rem',
+          fontSize: 'clamp(2rem, 8vw, 3.2rem)',
           fontWeight: 900,
           textAlign: 'center',
           color: '#fff',
@@ -76,7 +79,7 @@ const Hero = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.3 }}
         style={{
-          fontSize: '1.35rem',
+          fontSize: 'clamp(1rem, 4vw, 1.35rem)',
           color: '#f3f3f3',
           textAlign: 'center',
           maxWidth: 700,
@@ -89,21 +92,32 @@ const Hero = () => {
         CeRRoute ile modern, erişilebilir ve yapay zeka destekli eğitim dünyasına adım at. Lansmana özel avantajlardan yararlanmak ve ilk katılanlardan olmak için hemen kaydol!
       </motion.p>
       {/* Butonlar */}
-      <div style={{ display: 'flex', gap: 22, zIndex: 2, position: 'relative', flexWrap: 'wrap', justifyContent: 'center' }}>
+      <div style={{ 
+        display: 'flex', 
+        gap: 'clamp(12px, 3vw, 22px)', 
+        zIndex: 2, 
+        position: 'relative', 
+        flexWrap: 'wrap', 
+        justifyContent: 'center',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100%',
+        maxWidth: '400px',
+      }}>
         <motion.div
           whileHover={{ scale: 1.07, boxShadow: '0 8px 32px #FF9900AA' }}
           whileTap={{ scale: 0.97 }}
-          style={{ display: 'inline-block' }}
+          style={{ display: 'inline-block', width: '100%' }}
         >
           <a
             href="#early-access"
             style={{
               background: 'linear-gradient(90deg, #FF9900 60%, #ffb84d 100%)',
               color: '#fff',
-              padding: '16px 38px',
+              padding: 'clamp(14px, 4vw, 16px) clamp(24px, 6vw, 38px)',
               borderRadius: 32,
               fontWeight: 700,
-              fontSize: '1.13rem',
+              fontSize: 'clamp(1rem, 3vw, 1.13rem)',
               boxShadow: '0 4px 24px #FF9900AA',
               textDecoration: 'none',
               transition: 'all 0.2s',
@@ -112,6 +126,8 @@ const Hero = () => {
               cursor: 'pointer',
               letterSpacing: '0.5px',
               display: 'inline-block',
+              width: '100%',
+              textAlign: 'center',
             }}
           >
             Erken Kayıt Ol
@@ -120,7 +136,7 @@ const Hero = () => {
         <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
-          style={{ display: 'inline-block' }}
+          style={{ display: 'inline-block', width: '100%' }}
           onHoverStart={() => setIsHovered(true)}
           onHoverEnd={() => setIsHovered(false)}
         >
@@ -129,10 +145,10 @@ const Hero = () => {
             style={{
               background: 'rgba(255,255,255,0.13)',
               color: isHovered ? '#FF9900' : '#fff',
-              padding: '16px 32px',
+              padding: 'clamp(14px, 4vw, 16px) clamp(20px, 5vw, 32px)',
               borderRadius: 32,
               fontWeight: 700,
-              fontSize: '1.13rem',
+              fontSize: 'clamp(1rem, 3vw, 1.13rem)',
               boxShadow: '0 2px 12px rgba(34,34,34,0.10)',
               textDecoration: 'none',
               transition: 'all 0.2s',
@@ -141,6 +157,8 @@ const Hero = () => {
               cursor: 'pointer',
               letterSpacing: '0.5px',
               display: 'inline-block',
+              width: '100%',
+              textAlign: 'center',
             }}
           >
             Neler Sunuyoruz?
