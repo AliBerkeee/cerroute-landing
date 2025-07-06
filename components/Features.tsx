@@ -177,7 +177,7 @@ const Features = () => (
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        style={{ textAlign: 'center', fontSize: '2.3rem', fontWeight: 800, marginBottom: 18, color: '#FF9900', letterSpacing: '-0.5px' }}
+        style={{ textAlign: 'center', fontSize: 'clamp(1.8rem, 6vw, 2.3rem)', fontWeight: 800, marginBottom: 18, color: '#FF9900', letterSpacing: '-0.5px' }}
       >
         Neden Cerroute?
       </motion.h2>
@@ -186,7 +186,7 @@ const Features = () => (
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.1 }}
         viewport={{ once: true }}
-        style={{ textAlign: 'center', fontSize: '1.15rem', color: '#444', fontWeight: 500, marginBottom: 38, maxWidth: 700, marginLeft: 'auto', marginRight: 'auto' }}
+        style={{ textAlign: 'center', fontSize: 'clamp(1rem, 3vw, 1.15rem)', color: '#444', fontWeight: 500, marginBottom: 38, maxWidth: 700, marginLeft: 'auto', marginRight: 'auto', padding: '0 16px' }}
       >
         CeRRoute, modern ve yapay zeka destekli eğitim yaklaşımıyla, kişiselleştirilmiş ve erişilebilir bir öğrenme deneyimi sunar.
       </motion.p>
@@ -197,11 +197,11 @@ const Features = () => (
         viewport={{ once: true }}
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))',
-          gap: 36,
+          gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(280px, 80vw, 290px), 1fr))',
+          gap: 'clamp(24px, 6vw, 36px)',
           maxWidth: 1200,
           margin: '0 auto',
-          padding: '0 16px',
+          padding: '0 clamp(16px, 4vw, 16px)',
         }}
       >
         {features.map((f, i) => (

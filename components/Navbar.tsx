@@ -41,15 +41,26 @@ const Navbar = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '0 48px',
-        height: 72,
+        padding: '0 clamp(16px, 4vw, 48px)',
+        height: 'clamp(60px, 12vw, 72px)',
         transition: 'background 0.25s, box-shadow 0.25s, backdrop-filter 0.25s',
       }}
     >
-      <div style={{ fontWeight: 800, fontSize: 24, color: '#FF9900', letterSpacing: '-1px' }}>
+      <div style={{ fontWeight: 800, fontSize: 'clamp(20px, 5vw, 24px)', color: '#FF9900', letterSpacing: '-1px' }}>
         CeRRoute
       </div>
-      <div style={{ display: 'flex', gap: 38, position: 'absolute', left: '50%', top: 0, height: '100%', transform: 'translateX(-50%)', alignItems: 'center' }}>
+      <div style={{ 
+        display: 'flex', 
+        gap: 'clamp(20px, 5vw, 38px)', 
+        position: 'absolute', 
+        left: '50%', 
+        top: 0, 
+        height: '100%', 
+        transform: 'translateX(-50%)', 
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+      }}>
         {navLinks.map(link => (
           <button
             key={link.to}
@@ -59,7 +70,7 @@ const Navbar = () => {
               border: 'none',
               color: scrolled ? '#222' : '#fff',
               fontWeight: 600,
-              fontSize: 18,
+              fontSize: 'clamp(14px, 3.5vw, 18px)',
               cursor: 'pointer',
               padding: 0,
               margin: 0,
@@ -78,11 +89,11 @@ const Navbar = () => {
           background: 'linear-gradient(90deg, #FF9900 60%, #ffb84d 100%)',
           color: '#fff',
           fontWeight: 700,
-          fontSize: 15,
+          fontSize: 'clamp(13px, 3vw, 15px)',
           borderRadius: 14,
-          padding: '9px 22px',
+          padding: 'clamp(7px, 2vw, 9px) clamp(16px, 4vw, 22px)',
           textDecoration: 'none',
-          marginLeft: 32,
+          marginLeft: 'clamp(16px, 4vw, 32px)',
           boxShadow: '0 2px 12px #FF990044',
           display: 'flex',
           alignItems: 'center',
