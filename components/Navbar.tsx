@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FiMenu, FiX } from 'react-icons/fi';
 
 const navLinks = [
   { label: 'Özellikler', to: 'features' },
@@ -18,13 +19,24 @@ const scrollToSection = (id: string) => {
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 24);
     };
+    const onResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      if (window.innerWidth > 768) setMenuOpen(false);
+    };
     window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener('resize', onResize);
+    onResize();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    };
   }, []);
 
   return (
@@ -49,65 +61,170 @@ const Navbar = () => {
       <div style={{ fontWeight: 800, fontSize: 'clamp(20px, 5vw, 24px)', color: '#FF9900', letterSpacing: '-1px' }}>
         CeRRoute
       </div>
-      <div style={{ 
-        display: 'flex', 
-        gap: 'clamp(20px, 5vw, 38px)', 
-        position: 'absolute', 
-        left: '50%', 
-        top: 0, 
-        height: '100%', 
-        transform: 'translateX(-50%)', 
-        alignItems: 'center',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-      }}>
-        {navLinks.map(link => (
+      {/* Masaüstü Menü */}
+      {!isMobile && (
+        <>
+          <div style={{ 
+            display: 'flex', 
+            gap: 'clamp(20px, 5vw, 38px)', 
+            position: 'absolute', 
+            left: '50%', 
+            top: 0, 
+            height: '100%', 
+            transform: 'translateX(-50%)', 
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+          }}>
+            {navLinks.map(link => (
+              <button
+                key={link.to}
+                onClick={() => scrollToSection(link.to)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: scrolled ? '#222' : '#fff',
+                  fontWeight: 600,
+                  fontSize: 'clamp(14px, 3.5vw, 18px)',
+                  cursor: 'pointer',
+                  padding: 0,
+                  margin: 0,
+                  transition: 'color 0.2s',
+                }}
+                onMouseOver={e => (e.currentTarget.style.color = '#FF9900')}
+                onMouseOut={e => (e.currentTarget.style.color = scrolled ? '#222' : '#fff')}
+              >
+                {link.label}
+              </button>
+            ))}
+          </div>
           <button
-            key={link.to}
-            onClick={() => scrollToSection(link.to)}
+            onClick={() => scrollToSection('early-access')}
+            style={{
+              background: 'linear-gradient(90deg, #FF9900 60%, #ffb84d 100%)',
+              color: '#fff',
+              fontWeight: 700,
+              fontSize: 'clamp(13px, 3vw, 15px)',
+              borderRadius: 14,
+              padding: 'clamp(7px, 2vw, 9px) clamp(16px, 4vw, 22px)',
+              textDecoration: 'none',
+              marginLeft: 'clamp(16px, 4vw, 32px)',
+              boxShadow: '0 2px 12px #FF990044',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              transition: 'background 0.2s, box-shadow 0.2s',
+              border: 'none',
+              outline: 'none',
+              cursor: 'pointer',
+            }}
+            onMouseOver={e => { e.currentTarget.style.background = '#FF9900'; e.currentTarget.style.boxShadow = '0 4px 18px #FF990088'; }}
+            onMouseOut={e => { e.currentTarget.style.background = 'linear-gradient(90deg, #FF9900 60%, #ffb84d 100%)'; e.currentTarget.style.boxShadow = '0 2px 12px #FF990044'; }}
+          >
+            Erken Kayıt
+          </button>
+        </>
+      )}
+      {/* Mobil Hamburger Menü */}
+      {isMobile && (
+        <>
+          <button
+            aria-label="Menüyü Aç"
+            onClick={() => setMenuOpen(true)}
             style={{
               background: 'none',
               border: 'none',
-              color: scrolled ? '#222' : '#fff',
-              fontWeight: 600,
-              fontSize: 'clamp(14px, 3.5vw, 18px)',
+              color: '#FF9900',
+              fontSize: 32,
               cursor: 'pointer',
-              padding: 0,
-              margin: 0,
-              transition: 'color 0.2s',
+              zIndex: 201,
+              marginLeft: 'auto',
+              padding: 8,
+              display: 'flex',
+              alignItems: 'center',
             }}
-            onMouseOver={e => (e.currentTarget.style.color = '#FF9900')}
-            onMouseOut={e => (e.currentTarget.style.color = scrolled ? '#222' : '#fff')}
           >
-            {link.label}
+            <FiMenu />
           </button>
-        ))}
-      </div>
-      <button
-        onClick={() => scrollToSection('early-access')}
-        style={{
-          background: 'linear-gradient(90deg, #FF9900 60%, #ffb84d 100%)',
-          color: '#fff',
-          fontWeight: 700,
-          fontSize: 'clamp(13px, 3vw, 15px)',
-          borderRadius: 14,
-          padding: 'clamp(7px, 2vw, 9px) clamp(16px, 4vw, 22px)',
-          textDecoration: 'none',
-          marginLeft: 'clamp(16px, 4vw, 32px)',
-          boxShadow: '0 2px 12px #FF990044',
-          display: 'flex',
-          alignItems: 'center',
-          gap: 8,
-          transition: 'background 0.2s, box-shadow 0.2s',
-          border: 'none',
-          outline: 'none',
-          cursor: 'pointer',
-        }}
-        onMouseOver={e => { e.currentTarget.style.background = '#FF9900'; e.currentTarget.style.boxShadow = '0 4px 18px #FF990088'; }}
-        onMouseOut={e => { e.currentTarget.style.background = 'linear-gradient(90deg, #FF9900 60%, #ffb84d 100%)'; e.currentTarget.style.boxShadow = '0 2px 12px #FF990044'; }}
-      >
-        Erken Kayıt
-      </button>
+          {/* Açılır Menü Paneli */}
+          {menuOpen && (
+            <div
+              style={{
+                position: 'fixed',
+                top: 0,
+                right: 0,
+                width: '80vw',
+                maxWidth: 320,
+                height: '100vh',
+                background: '#fff',
+                boxShadow: '-2px 0 24px #2222',
+                zIndex: 200,
+                display: 'flex',
+                flexDirection: 'column',
+                padding: '32px 24px 24px 24px',
+                animation: 'slideInRight 0.25s',
+              }}
+            >
+              <button
+                aria-label="Menüyü Kapat"
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: '#FF9900',
+                  fontSize: 32,
+                  cursor: 'pointer',
+                  alignSelf: 'flex-end',
+                  marginBottom: 18,
+                }}
+              >
+                <FiX />
+              </button>
+              {navLinks.map(link => (
+                <button
+                  key={link.to}
+                  onClick={() => { setMenuOpen(false); scrollToSection(link.to); }}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: '#222',
+                    fontWeight: 700,
+                    fontSize: 20,
+                    cursor: 'pointer',
+                    padding: '14px 0',
+                    margin: 0,
+                    textAlign: 'left',
+                    width: '100%',
+                    borderBottom: '1px solid #f3f3f3',
+                  }}
+                >
+                  {link.label}
+                </button>
+              ))}
+              <button
+                onClick={() => { setMenuOpen(false); scrollToSection('early-access'); }}
+                style={{
+                  background: 'linear-gradient(90deg, #FF9900 60%, #ffb84d 100%)',
+                  color: '#fff',
+                  fontWeight: 700,
+                  fontSize: 18,
+                  borderRadius: 14,
+                  padding: '14px 0',
+                  marginTop: 24,
+                  boxShadow: '0 2px 12px #FF990044',
+                  border: 'none',
+                  outline: 'none',
+                  cursor: 'pointer',
+                  width: '100%',
+                  letterSpacing: '0.5px',
+                }}
+              >
+                Erken Kayıt
+              </button>
+            </div>
+          )}
+        </>
+      )}
     </nav>
   );
 };
