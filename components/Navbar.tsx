@@ -129,8 +129,8 @@ const Navbar = () => {
       {isMobile && (
         <>
           <button
-            aria-label="Menüyü Aç"
-            onClick={() => setMenuOpen(true)}
+            aria-label={menuOpen ? "Menüyü Kapat" : "Menüyü Aç"}
+            onClick={() => setMenuOpen(!menuOpen)}
             style={{
               background: 'none',
               border: 'none',
@@ -142,86 +142,128 @@ const Navbar = () => {
               padding: 8,
               display: 'flex',
               alignItems: 'center',
+              transition: 'transform 0.2s ease',
+              transform: menuOpen ? 'rotate(90deg)' : 'rotate(0deg)',
             }}
           >
-            <FiMenu />
+            {menuOpen ? <FiX /> : <FiMenu />}
           </button>
           {/* Açılır Menü Paneli */}
           {menuOpen && (
-            <div
-              style={{
-                position: 'fixed',
-                top: 0,
-                right: 0,
-                width: '80vw',
-                maxWidth: 320,
-                height: '100vh',
-                background: '#fff',
-                boxShadow: '-2px 0 24px #2222',
-                zIndex: 200,
-                display: 'flex',
-                flexDirection: 'column',
-                padding: '32px 24px 24px 24px',
-                animation: 'slideInRight 0.25s',
-              }}
-            >
-              <button
-                aria-label="Menüyü Kapat"
+            <>
+              {/* Overlay */}
+              <div
                 onClick={() => setMenuOpen(false)}
                 style={{
-                  background: 'none',
-                  border: 'none',
-                  color: '#FF9900',
-                  fontSize: 32,
-                  cursor: 'pointer',
-                  alignSelf: 'flex-end',
-                  marginBottom: 18,
+                  position: 'fixed',
+                  top: 0,
+                  left: 0,
+                  width: '100vw',
+                  height: '100vh',
+                  background: 'rgba(0,0,0,0.3)',
+                  zIndex: 199,
+                  animation: 'fadeIn 0.2s ease',
                 }}
-              >
-                <FiX />
-              </button>
-              {navLinks.map(link => (
-                <button
-                  key={link.to}
-                  onClick={() => { setMenuOpen(false); scrollToSection(link.to); }}
-                  style={{
-                    background: 'none',
-                    border: 'none',
-                    color: '#222',
-                    fontWeight: 700,
-                    fontSize: 20,
-                    cursor: 'pointer',
-                    padding: '14px 0',
-                    margin: 0,
-                    textAlign: 'left',
-                    width: '100%',
-                    borderBottom: '1px solid #f3f3f3',
-                  }}
-                >
-                  {link.label}
-                </button>
-              ))}
-              <button
-                onClick={() => { setMenuOpen(false); scrollToSection('early-access'); }}
+              />
+              <div
                 style={{
-                  background: 'linear-gradient(90deg, #FF9900 60%, #ffb84d 100%)',
-                  color: '#fff',
-                  fontWeight: 700,
-                  fontSize: 18,
-                  borderRadius: 14,
-                  padding: '14px 0',
-                  marginTop: 24,
-                  boxShadow: '0 2px 12px #FF990044',
-                  border: 'none',
-                  outline: 'none',
-                  cursor: 'pointer',
-                  width: '100%',
-                  letterSpacing: '0.5px',
+                  position: 'fixed',
+                  top: 0,
+                  right: 0,
+                  width: '80vw',
+                  maxWidth: 320,
+                  height: '100vh',
+                  background: '#fff',
+                  boxShadow: '-4px 0 32px rgba(0,0,0,0.15)',
+                  zIndex: 200,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  padding: '32px 24px 24px 24px',
+                  animation: 'slideInRight 0.3s ease',
+                  transform: 'translateX(0)',
                 }}
               >
-                Erken Kayıt
-              </button>
-            </div>
+                <div style={{ 
+                  display: 'flex', 
+                  justifyContent: 'space-between', 
+                  alignItems: 'center',
+                  marginBottom: 32,
+                  paddingBottom: 16,
+                  borderBottom: '2px solid #f3f3f3',
+                }}>
+                  <div style={{ fontWeight: 800, fontSize: 24, color: '#FF9900', letterSpacing: '-1px' }}>
+                    CeRRoute
+                  </div>
+                  <button
+                    aria-label="Menüyü Kapat"
+                    onClick={() => setMenuOpen(false)}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: '#FF9900',
+                      fontSize: 28,
+                      cursor: 'pointer',
+                      padding: 4,
+                      borderRadius: 8,
+                      transition: 'background 0.2s',
+                    }}
+                    onMouseOver={e => e.currentTarget.style.background = '#fff7ec'}
+                    onMouseOut={e => e.currentTarget.style.background = 'transparent'}
+                  >
+                    <FiX />
+                  </button>
+                </div>
+                {navLinks.map((link, index) => (
+                  <button
+                    key={link.to}
+                    onClick={() => { setMenuOpen(false); scrollToSection(link.to); }}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: '#222',
+                      fontWeight: 600,
+                      fontSize: 18,
+                      cursor: 'pointer',
+                      padding: '16px 0',
+                      margin: 0,
+                      textAlign: 'left',
+                      width: '100%',
+                      borderBottom: '1px solid #f8f8f8',
+                      transition: 'color 0.2s, background 0.2s',
+                      animation: `slideInRight 0.3s ease ${index * 0.05}s both`,
+                    }}
+                    onMouseOver={e => { e.currentTarget.style.color = '#FF9900'; e.currentTarget.style.background = '#fff7ec'; }}
+                    onMouseOut={e => { e.currentTarget.style.color = '#222'; e.currentTarget.style.background = 'transparent'; }}
+                  >
+                    {link.label}
+                  </button>
+                ))}
+                <button
+                  onClick={() => { setMenuOpen(false); scrollToSection('early-access'); }}
+                  style={{
+                    background: 'linear-gradient(90deg, #FF9900 60%, #ffb84d 100%)',
+                    color: '#fff',
+                    fontWeight: 700,
+                    fontSize: 16,
+                    borderRadius: 16,
+                    padding: '16px 0',
+                    marginTop: 32,
+                    boxShadow: '0 4px 16px #FF990044',
+                    border: 'none',
+                    outline: 'none',
+                    cursor: 'pointer',
+                    width: '100%',
+                    letterSpacing: '0.5px',
+                    transition: 'transform 0.2s, box-shadow 0.2s',
+                    animation: 'slideInRight 0.3s ease 0.2s both',
+                  }}
+                  onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 20px #FF990066'; }}
+                  onMouseOut={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 16px #FF990044'; }}
+                >
+                  Erken Kayıt
+                </button>
+              </div>
+            </>
           )}
         </>
       )}
