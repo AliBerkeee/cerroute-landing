@@ -11,9 +11,29 @@ const navLinks = [
 const scrollToSection = (id: string) => {
   const el = document.getElementById(id);
   if (el) {
-    const yOffset = -80; // navbar yüksekliği kadar offset
-    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-    window.scrollTo({ top: y, behavior: 'smooth' });
+    const targetPosition = el.offsetTop - 100;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 1200; // Daha uzun süre
+    let start = null;
+
+    const animation = (currentTime) => {
+      if (start === null) start = currentTime;
+      const timeElapsed = currentTime - start;
+      const run = easeInOutCubic(timeElapsed, startPosition, distance, duration);
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+    };
+
+    // Smooth easing function
+    const easeInOutCubic = (t, b, c, d) => {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t * t + b;
+      t -= 2;
+      return c / 2 * (t * t * t + 2) + b;
+    };
+
+    requestAnimationFrame(animation);
   }
 };
 
@@ -185,7 +205,7 @@ const Navbar = () => {
               >
                 <div style={{ 
                   display: 'flex', 
-                  justifyContent: 'space-between', 
+                  justifyContent: 'center', 
                   alignItems: 'center',
                   marginBottom: 32,
                   paddingBottom: 16,
@@ -194,24 +214,6 @@ const Navbar = () => {
                   <div style={{ fontWeight: 800, fontSize: 24, color: '#FF9900', letterSpacing: '-1px' }}>
                     CeRRoute
                   </div>
-                  <button
-                    aria-label="Menüyü Kapat"
-                    onClick={() => setMenuOpen(false)}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      color: '#FF9900',
-                      fontSize: 28,
-                      cursor: 'pointer',
-                      padding: 4,
-                      borderRadius: 8,
-                      transition: 'background 0.2s',
-                    }}
-                    onMouseOver={e => e.currentTarget.style.background = '#fff7ec'}
-                    onMouseOut={e => e.currentTarget.style.background = 'transparent'}
-                  >
-                    <FiX />
-                  </button>
                 </div>
                 {navLinks.map((link, index) => (
                   <button

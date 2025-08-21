@@ -28,3 +28,278 @@ input, select, button {
 ::-moz-placeholder { color: #bbb; }
 :-ms-input-placeholder { color: #bbb; }
 ::placeholder { color: #bbb; } 
+
+/* Smooth Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced Scroll Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Smooth Section Transitions */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Enhanced Button Hover Effects */
+button, a {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Smooth Navbar Transitions */
+nav {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Enhanced Mobile Menu Animations */
+.mobile-menu-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.mobile-menu-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mobile-menu-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mobile-menu-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Smooth Scroll Indicator */
+.scroll-indicator {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Enhanced Focus States */
+button:focus,
+a:focus {
+  outline: 2px solid #FF9900;
+  outline-offset: 2px;
+}
+
+/* Smooth Loading States */
+.loading {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced Card Hover Effects */
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Smooth Text Animations */
+.text-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: textReveal 0.8s ease forwards;
+}
+
+@keyframes textReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced Gradient Animations */
+.gradient-animate {
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Smooth Section Transitions */
+.section-transition {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section-transition.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced Button Press Effects */
+.button-press {
+  transition: all 0.1s ease;
+}
+
+.button-press:active {
+  transform: scale(0.95);
+}
+
+/* Smooth Icon Rotations */
+.icon-rotate {
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.icon-rotate:hover {
+  transform: rotate(360deg);
+}
+
+/* Enhanced Glow Effects */
+.glow-effect {
+  transition: all 0.3s ease;
+}
+
+.glow-effect:hover {
+  box-shadow: 0 0 20px rgba(255, 153, 0, 0.5);
+}
+
+/* Smooth Background Transitions */
+.bg-transition {
+  transition: background 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 768px) {
+  .mobile-optimized {
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-optimized:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Smooth Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF9900;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffb84d;
+}
+
+/* Enhanced Focus Management */
+.focus-visible {
+  outline: 2px solid #FF9900;
+  outline-offset: 2px;
+}
+
+/* Smooth State Transitions */
+.state-transition {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Enhanced Loading Animations */
+.loading-dots {
+  display: inline-block;
+}
+
+.loading-dots::after {
+  content: '';
+  animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% {
+    content: '';
+  }
+  40% {
+    content: '.';
+  }
+  60% {
+    content: '..';
+  }
+  80%, 100% {
+    content: '...';
+  }
+} 
