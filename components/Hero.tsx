@@ -560,7 +560,7 @@ const Hero = () => {
         style={{
           position: 'absolute',
           bottom: 40,
-          right: 40,
+          left: 40,
           zIndex: 2,
           display: 'flex',
           flexDirection: 'column',
